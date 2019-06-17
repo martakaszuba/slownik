@@ -6,7 +6,6 @@
 <body>
 <p>Uwaga: wyszukiwarka nie gwarantuje, że wszystkie odpowiedzi będą prawidłowe, w razie nieprawidłowości
 proszę sprawdzić słowo w innym słowniku</p>
-
     <div id="main">
     <form method="get">
     <div class="form-group">
@@ -15,8 +14,7 @@ proszę sprawdzić słowo w innym słowniku</p>
     <button type="submit" name ="submit" class="btn btn-success">Szukaj</button>
     </div>
     </form>
-    </div>
-    
+    </div> 
 <?php
 if (isset($_GET["submit"]) && (!empty(trim($_GET["text"])))){
    $txt = trim($_GET["text"]);
@@ -33,15 +31,14 @@ preg_match_all('/<a href=.*? class="plainLink">.*?a>/',$str2, $match2);
 if (count($match[0]) ===0 || count($match2[0]) ===0){
 echo '<div class="bg-danger text-white err"><h5>Nie znaleziono wyniku!</h5></div>';
 }
+    
 else {
     $ind = strpos($match[0][0], ">");
     $match[0][0] = substr($match[0][0], $ind+1);
-
     $ind2 = strpos($match2[0][0], ">");
     $match2[0][0] = substr($match2[0][0], $ind2+1);
     $searcheng = $match[0][0];
     $searchdeutsch = $match2[0][0];
-
     for($j=0; $j<strlen($txt); $j++){
         if ($txt[$j] === "+"){
             $txt[$j] =" ";
