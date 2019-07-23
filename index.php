@@ -22,6 +22,7 @@ proszę sprawdzić słowo w innym słowniku</p>
 <?php
 if (isset($_GET["submit"]) && (!empty(trim($_GET["text"])))){
    $txt = trim($_GET["text"]);
+   $txt = htmlspecialchars($txt);
    for($i=0; $i<strlen($txt); $i++){
     if ($txt[$i] === " "){
         $txt[$i] ="+";
